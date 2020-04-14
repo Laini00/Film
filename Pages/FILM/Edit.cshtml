@@ -1,0 +1,63 @@
+﻿@page
+@model Film_laini.EditModel
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+@if (SignInManager.IsSignedIn(User))
+{
+    <h4>film</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="film.ID" />
+                <div class="form-group">
+                    <label asp-for="film.Titolo" class="control-label"></label>
+                    <input asp-for="film.Titolo" class="form-control" />
+                    <span asp-validation-for="film.Titolo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="film.Trama" class="control-label"></label>
+                    <input asp-for="film.Trama" class="form-control" />
+                    <span asp-validation-for="film.Trama" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="film.AnnoDiUscita" class="control-label"></label>
+                    <input asp-for="film.AnnoDiUscita" class="form-control" />
+                    <span asp-validation-for="film.AnnoDiUscita" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="film.Regista" class="control-label"></label>
+                    <input asp-for="film.Regista" class="form-control" />
+                    <span asp-validation-for="film.Regista" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="film.Premi" class="control-label"></label>
+                    <input asp-for="film.Premi" class="form-control" />
+                    <span asp-validation-for="film.Premi" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-page="./Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+}
+else
+{ <p>Error (Esegui il login) </p>}

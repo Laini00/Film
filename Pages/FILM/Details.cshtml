@@ -1,0 +1,56 @@
+﻿@page
+@model Film_laini.DetailsModel
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+@if (SignInManager.IsSignedIn(User))
+{
+    <div>
+        <h4>film</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.film.Titolo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.film.Titolo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.film.Trama)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.film.Trama)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.film.AnnoDiUscita)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.film.AnnoDiUscita)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.film.Regista)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.film.Regista)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.film.Premi)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.film.Premi)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.film.ID">Edit</a> |
+        <a asp-page="./Index">Back to List</a>
+    </div>
+}
+else
+{ <p>Error (Esegui il login) </p>}
